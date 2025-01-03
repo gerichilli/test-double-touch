@@ -48,6 +48,7 @@
             height: 40px;
             user-select: none;
             -webkit-user-select: none;
+            touch-action: manipulation;
         }
 
         button:hover {
@@ -57,11 +58,10 @@
         button:disabled {
             background-color: #ccc;
             cursor: not-allowed;
-            pointer-events: none;
         }
 
-        #decreaseButton {
-          touch-action: manipulation;
+        #decreaseButton:disabled {
+            pointer-events: none;
         }
     </style>
 </head>
