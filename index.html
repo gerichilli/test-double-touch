@@ -84,6 +84,7 @@
         function updateDisplay() {
             productCount.textContent = count;
             decreaseButton.disabled = count === 0;
+            increaseButton.disabled = count >= 10;
         }
 
         increaseButton.addEventListener('click', () => {
