@@ -120,9 +120,7 @@
 
         document.addEventListener('touchstart', (event) => {
             const target = event.target;
-            if (target.tagName === 'BUTTON' && target.disabled) {
-                event.preventDefault(); // Ngăn xử lý zoom
-            }
+            event.preventDefault(); // Ngăn xử lý zoom
         }, { passive: false });
     </script>
 </body>
