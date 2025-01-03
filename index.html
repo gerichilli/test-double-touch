@@ -22,7 +22,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 300px;
-            touch-action: manipulation;
+            
         }
 
         .counter-display {
@@ -49,19 +49,22 @@
             height: 40px;
             user-select: none;
             -webkit-user-select: none;
+            touch-action: manipulation;
         }
 
         button:hover {
             background-color: #0056b3;
         }
 
-        button:disabled {
-            background-color: #ccc;
+        button.disabled {
+            pointer-events: none;
+            opacity: 0.5;
             cursor: not-allowed;
+            background-color: gray;
         }
 
-        #decreaseButton:disabled {
-            pointer-events: none;
+        #productCount {
+            user-select: none;
         }
     </style>
 </head>
@@ -83,9 +86,20 @@
 
         function updateDisplay() {
             productCount.textContent = count;
-            decreaseButton.disabled = count === 0;
-            increaseButton.disabled = count >= 10;
+            if(count === 0) {
+                decreaseButton.classList.add("disabled")
+            } else {
+                decreaseButton.classList.remove("disabled")
+            }
+
+            if(count >= 10) {
+                increaseButton.classList.add("disabled")
+            } else {
+                increaseButton.classList.remove("disabled")
+            }
         }
+
+        updateDisplay();
 
         increaseButton.addEventListener('click', () => {
             count++;
