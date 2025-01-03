@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 300px;
-            
+
         }
 
         .counter-display {
@@ -68,6 +69,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="counter-container">
         <div class="counter-display" id="productCount">0</div>
@@ -86,13 +88,13 @@
 
         function updateDisplay() {
             productCount.textContent = count;
-            if(count === 0) {
+            if (count === 0) {
                 decreaseButton.classList.add("disabled")
             } else {
                 decreaseButton.classList.remove("disabled")
             }
 
-            if(count >= 10) {
+            if (count >= 10) {
                 increaseButton.classList.add("disabled")
             } else {
                 increaseButton.classList.remove("disabled")
@@ -115,6 +117,14 @@
 
         // Initialize display
         updateDisplay();
+
+        document.addEventListener('touchstart', (event) => {
+            const target = event.target;
+            if (target.tagName === 'BUTTON' && target.disabled) {
+                event.preventDefault(); // Ngăn xử lý zoom
+            }
+        }, { passive: false });
     </script>
 </body>
+
 </html>
