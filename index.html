@@ -121,10 +121,10 @@
         updateDisplay();
 
         document.addEventListener('touchstart', (event) => {
+            document.querySelector('.info').innerHTML = JSON.stringify(event.target)
             const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
             buttons.forEach(btn => {
                 if (btn.classList.contains('disabled')) {
-                    console.log(btn)
                     event.preventDefault(); // Ngăn hành vi mặc định
                 }
             })
