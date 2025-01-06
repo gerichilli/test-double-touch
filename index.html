@@ -118,13 +118,16 @@
         // Initialize display
         updateDisplay();
 
-        document.addEventListener('touchstart', (event) => {
-            const target = event.target;
-            if (target.hasClass("disabled")) {
-                event.preventDefault(); // Ngăn xử lý zoom
-                console.log('disabled')
-            }
-        }, { passive: false });
+        document.addEventListener('click', (event) => {
+            const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
+            buttons.forEach(btn => {
+                if (btn.classList.contains('disabled')) {
+                    console.log(btn)
+                    event.preventDefault(); // Ngăn hành vi mặc định
+                }
+            })
+            
+        });
     </script>
 </body>
 
