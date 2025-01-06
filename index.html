@@ -120,7 +120,10 @@
 
         document.addEventListener('touchstart', (event) => {
             const target = event.target;
-            event.preventDefault(); // Ngăn xử lý zoom
+            if (target.hasClass("disabled")) {
+                event.preventDefault(); // Ngăn xử lý zoom
+                console.log('disabled')
+            }
         }, { passive: false });
     </script>
 </body>
