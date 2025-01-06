@@ -85,56 +85,59 @@
             <button id="decreaseButton">-</button>
             <button id="increaseButton">+</button>
         </div>
-        <pre class="info"></p>
+        <pre class="info"></pre>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const productCount = document.getElementById('productCount');
-        const decreaseButton = document.getElementById('decreaseButton');
-        const increaseButton = document.getElementById('increaseButton');
+        $(document).ready(function () {
+            const $productCount = $('#productCount');
+            const $decreaseButton = $('#decreaseButton');
+            const $increaseButton = $('#increaseButton');
+            const $buttonContainer = $('.button-container');
 
-        let count = 0;
+            let count = 0;
 
-        function updateDisplay() {
-            productCount.textContent = count;
-            if (count === 0) {
-                decreaseButton.classList.add("disabled")
-            } else {
-                decreaseButton.classList.remove("disabled")
-            }
-
-            if (count >= 10) {
-                increaseButton.classList.add("disabled")
-            } else {
-                increaseButton.classList.remove("disabled")
-            }
-        }
-
-        updateDisplay();
-
-        increaseButton.addEventListener('click', () => {
-            count++;
-            updateDisplay();
-        });
-
-        decreaseButton.addEventListener('click', () => {
-            if (count > 0) {
-                count--;
-                updateDisplay();
-            }
-        });
-
-        // Initialize display
-        updateDisplay();
-
-        document.addEventListener('touchend', (event) => {
-            document.querySelector('.info').innerHTML = event.target.id || event.target.classList
-            const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
-            buttons.forEach(btn => {
-                if (btn.classList.contains('disabled')) {
-                    event.preventDefault(); // Ngăn hành vi mặc định
+            function updateDisplay() {
+                $productCount.text(count);
+                if (count === 0) {
+                    $decreaseButton.addClass("disabled");
+                } else {
+                    $decreaseButton.removeClass("disabled");
                 }
-            })
+
+                if (count >= 10) {
+                    $increaseButton.addClass("disabled");
+                } else {
+                    $increaseButton.removeClass("disabled");
+                }
+            }
+
+            updateDisplay();
+
+            $increaseButton.on('click', function () {
+                if (!$(this).hasClass('disabled')) {
+                    count++;
+                    updateDisplay();
+                }
+            });
+
+            $decreaseButton.on('click', function () {
+                if (!$(this).hasClass('disabled')) {
+                    count--;
+                    updateDisplay();
+                }
+            });
+
+            $buttonContainer.on('click', function (event) {
+                const $target = $(event.target);
+
+                $('.info').text($target.attr('id') || $target.attr('class'));
+
+                if ($target.find('button').hasClass('disabled')) {
+                    event.preventDefault();
+                }
+            });
         });
     </script>
 </body>
