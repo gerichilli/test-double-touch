@@ -129,18 +129,54 @@
                 }
             });
 
-            $buttonContainer.on('click', function (event) {
-                const $target = $(event.target);
+            function isTablet() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-                $('.info').text($target.attr('id') || $target.attr('class'));
+                // Check for tablet-specific keywords in the User-Agent
+                const tabletKeywords = [
+                    'ipad', 'android', 'silk', 'playbook', 'tablet', 'kindle'
+                ];
 
-                if ($target.find('button').hasClass('disabled')) {
-                    event.preventDefault();
-                }
-            });
+                // Exclude phones
+                const phoneKeywords = [
+                    'mobile', 'iphone', 'ipod'
+                ];
+
+                const isTabletDevice = tabletKeywords.some(keyword => userAgent.includes(keyword)) &&
+                    !phoneKeywords.some(keyword => userAgent.includes(keyword));
+
+                // Additional check based on screen size
+                const isTabletScreen = window.innerWidth >= 600 && window.innerWidth <= 1280;
+
+                return isTouchDevice && (isTabletDevice || isTabletScreen);
+            }
+
+            if(isTablet) {
+                $buttonContainer.on('touchend', function (event) {
+                    const $target = $(event.target);
+
+                    if (isTablet) {
+                        if ($target.find('button').hasClass('disabled')) {
+                            $('.info').text($target.attr('id') || $target.attr('class'));
+                            event.preventDefault();
+                        }
+                    }
+                });
+            } else {
+                $buttonContainer.on('mouseleave', function (event) {
+                    const $target = $(event.target);
+
+                    if (isTablet) {
+                        if ($target.find('button').hasClass('disabled')) {
+                            $('.info').text($target.attr('id') || $target.attr('class'));
+                            event.preventDefault();
+                        }
+                    }
+                });
+            }
         });
 
-        
     </script>
 </body>
 
