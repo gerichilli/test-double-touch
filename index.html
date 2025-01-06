@@ -35,7 +35,7 @@
         .button-container {
             display: flex;
             justify-content: space-between;
-            /* touch-action: manipulation; */
+            touch-action: manipulation;
         }
 
         button {
@@ -131,11 +131,11 @@
         document.addEventListener('touchstart', (event) => {
             document.querySelector('.info').innerHTML = event.target.id || event.target.classList
             const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
-            buttons.forEach(btn => {
-                if (btn.classList.contains('disabled')) {
-                    event.preventDefault(); // Ngăn hành vi mặc định
-                }
-            })
+            // buttons.forEach(btn => {
+            //     if (btn.classList.contains('disabled')) {
+            //         event.preventDefault(); // Ngăn hành vi mặc định
+            //     }
+            // })
         });
     </script>
 </body>
