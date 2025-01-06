@@ -135,12 +135,12 @@
 
                 // Check for tablet-specific keywords in the User-Agent
                 const tabletKeywords = [
-                    'ipad', 'android', 'silk', 'playbook', 'tablet', 'kindle'
+                    'ipad', 'android'
                 ];
 
                 // Exclude phones
                 const phoneKeywords = [
-                    'mobile', 'iphone', 'ipod'
+                    'iphone', 'ipod'
                 ];
 
                 const isTabletDevice = tabletKeywords.some(keyword => userAgent.includes(keyword)) &&
@@ -158,7 +158,7 @@
 
                     if (isTablet) {
                         if ($target.find('button').hasClass('disabled')) {
-                            $('.info').text($target.attr('id') || $target.attr('class'));
+                            $('.info').text(`tablet ${$target.attr('class')}`);
                             event.preventDefault();
                         }
                     }
@@ -169,7 +169,7 @@
 
                     if (isTablet) {
                         if ($target.find('button').hasClass('disabled')) {
-                            $('.info').text($target.attr('id') || $target.attr('class'));
+                            $('.info').text(`pc ${$target.attr('class')}`);
                             event.preventDefault();
                         }
                     }
