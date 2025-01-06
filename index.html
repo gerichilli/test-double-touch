@@ -68,6 +68,14 @@
         #productCount {
             user-select: none;
         }
+
+        .info {
+            position: fixed;
+            left: 50%;
+            top: 0;
+            background-color: #007bff;
+            color: white;
+        }
     </style>
 </head>
 
@@ -121,7 +129,7 @@
         updateDisplay();
 
         document.addEventListener('touchstart', (event) => {
-            document.querySelector('.info').innerHTML = JSON.stringify(event.target, 2)
+            document.querySelector('.info').innerHTML = event.target.id || event.target.classList
             const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
             buttons.forEach(btn => {
                 if (btn.classList.contains('disabled')) {
