@@ -35,6 +35,7 @@
         .button-container {
             display: flex;
             justify-content: space-between;
+            touch-action: manipulation;
         }
 
         button {
@@ -50,7 +51,6 @@
             height: 40px;
             user-select: none;
             -webkit-user-select: none;
-            touch-action: manipulation;
         }
 
         button:hover {
@@ -126,16 +126,6 @@
 
         // Initialize display
         updateDisplay();
-
-        document.addEventListener('touchstart', (event) => {
-            document.querySelector('.info').innerHTML = event.target.id || event.target.classList
-            const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
-            buttons.forEach(btn => {
-                if (btn.classList.contains('disabled')) {
-                    event.preventDefault(); // Ngăn hành vi mặc định
-                }
-            })
-        });
 
         document.addEventListener('touchend', (event) => {
             document.querySelector('.info').innerHTML = event.target.id || event.target.classList
