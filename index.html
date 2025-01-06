@@ -35,7 +35,7 @@
         .button-container {
             display: flex;
             justify-content: space-between;
-            touch-action: manipulation;
+            /* touch-action: manipulation; */
         }
 
         button {
@@ -51,7 +51,7 @@
             height: 40px;
             user-select: none;
             -webkit-user-select: none;
-            /* touch-action: manipulation; */
+            touch-action: manipulation;
         }
 
         button:hover {
@@ -78,6 +78,7 @@
             <button id="decreaseButton">-</button>
             <button id="increaseButton">+</button>
         </div>
+        <p class="info"></p>
     </div>
 
     <script>
@@ -119,16 +120,15 @@
         // Initialize display
         updateDisplay();
 
-        // Chrome works but Safari doesn't
-        // document.addEventListener('click', (event) => {
-        //     const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
-        //     buttons.forEach(btn => {
-        //         if (btn.classList.contains('disabled')) {
-        //             console.log(btn)
-        //             event.preventDefault(); // Ngăn hành vi mặc định
-        //         }
-        //     })
-        // });
+        document.addEventListener('touchstart', (event) => {
+            const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
+            buttons.forEach(btn => {
+                if (btn.classList.contains('disabled')) {
+                    console.log(btn)
+                    event.preventDefault(); // Ngăn hành vi mặc định
+                }
+            })
+        });
     </script>
 </body>
 
