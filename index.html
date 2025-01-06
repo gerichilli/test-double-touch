@@ -14,7 +14,6 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            touch-action: manipulation;
         }
 
         .counter-container {
@@ -63,7 +62,6 @@
             opacity: 0.5;
             cursor: not-allowed;
             background-color: gray;
-            touch-action: manipulation;
         }
 
         #productCount {
@@ -132,11 +130,21 @@
         document.addEventListener('touchstart', (event) => {
             document.querySelector('.info').innerHTML = event.target.id || event.target.classList
             const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
-            // buttons.forEach(btn => {
-            //     if (btn.classList.contains('disabled')) {
-            //         event.preventDefault(); // Ngăn hành vi mặc định
-            //     }
-            // })
+            buttons.forEach(btn => {
+                if (btn.classList.contains('disabled')) {
+                    event.preventDefault(); // Ngăn hành vi mặc định
+                }
+            })
+        });
+
+        document.addEventListener('touchend', (event) => {
+            document.querySelector('.info').innerHTML = event.target.id || event.target.classList
+            const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
+            buttons.forEach(btn => {
+                if (btn.classList.contains('disabled')) {
+                    event.preventDefault(); // Ngăn hành vi mặc định
+                }
+            })
         });
     </script>
 </body>
