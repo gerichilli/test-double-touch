@@ -78,7 +78,7 @@
             <button id="decreaseButton">-</button>
             <button id="increaseButton">+</button>
         </div>
-        <p class="info"></p>
+        <pre class="info"></p>
     </div>
 
     <script>
@@ -121,7 +121,7 @@
         updateDisplay();
 
         document.addEventListener('touchstart', (event) => {
-            document.querySelector('.info').innerHTML = JSON.stringify(event.target)
+            document.querySelector('.info').innerHTML = JSON.stringify(event.target, 2)
             const buttons = event.target.querySelectorAll('button'); // Tìm button gần nhất
             buttons.forEach(btn => {
                 if (btn.classList.contains('disabled')) {
