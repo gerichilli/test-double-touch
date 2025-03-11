@@ -53,6 +53,10 @@
                 }
             });
 
+            $increaseButton.on('touchstart', function () {
+                $('.info').append(`touchstart`);
+            });
+
             $decreaseButton.on('click', function () {
                 if (!$(this).hasClass('disabled')) {
                     count--;
@@ -100,83 +104,6 @@
                     // }
                 });
             }
-        });
-
-    </script>
-    <script>
-        // TEST 
-        // Test if touch-action Applies to Disabled Buttons
-        function isTouchActionAppliedOnDisabledButton() {
-            const button = document.createElement("button");
-            button.classList.add("disabled");
-            button.style.touchAction = "manipulation";
-            document.body.appendChild(button);
-
-            const computedStyle = window.getComputedStyle(button).touchAction;
-            document.body.removeChild(button);
-
-            if (computedStyle === "manipulation") {
-                $('.info').append(`touch-action applied on disabled button\n`);
-                console.log("touch-action applied on disabled button");
-            };
-        }
-
-        isTouchActionAppliedOnDisabledButton()
-
-        // Detect If a Disabled Button Receives Touch Events
-        function doesDisabledButtonReceiveTouchEvents() {
-            const button = document.createElement("button");
-            button.classList.add("disabled");
-            document.body.appendChild(button);
-
-            let receivedTouchEvent = false;
-            button.addEventListener("touchstart", () => {
-                receivedTouchEvent = true;
-            });
-
-            // Simulate a touch event (only works in real devices, not in simulators)
-            const touchEvent = new TouchEvent("touchstart", {
-                bubbles: true,
-                cancelable: true
-            });
-            button.dispatchEvent(touchEvent);
-
-            document.body.removeChild(button);
-            if (receivedTouchEvent) { 
-                $('.info').append(`Disabled button receives touch events\n`);
-                console.log("Disabled button receives touch events") 
-            };
-        }
-
-        doesDisabledButtonReceiveTouchEvents()
-
-        // Test If a Disabled Button Causes Zoom
-        function detectZoomIssueOnDisabledButton() {
-            return new Promise((resolve) => {
-                const button = document.createElement("button");
-                button.disabled = true;
-                document.body.appendChild(button);
-
-                let zoomDetected = false;
-                let initialScale = window.visualViewport.scale;
-
-                button.addEventListener("touchend", () => {
-                    setTimeout(() => {
-                        if (window.visualViewport.scale !== initialScale) {
-                            zoomDetected = true;
-                        }
-                        document.body.removeChild(button);
-                        resolve(zoomDetected);
-                    }, 300);
-                });
-
-                button.dispatchEvent(new TouchEvent("touchend", { bubbles: true, cancelable: true }));
-            });
-        }
-
-        detectZoomIssueOnDisabledButton().then((zoomIssue) => {
-            console.log("Disabled button causes zoom:", zoomIssue);
-            $('.info').append(`Disabled button causes zoom: ${zoomIssue}`);
         });
 
     </script>
