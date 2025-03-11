@@ -53,8 +53,13 @@
                 }
             });
 
-            $increaseButton.on('touchstart', function () {
-                $('.info').text(`touchstart`);
+            $buttonContainer.on('click', function (ev) {
+                console.log(ev.target.id || ev.target.classList[0])
+                $('.info').text(ev.target.id || ev.target.classList[0])
+            });
+
+            $buttonContainer.on('touchstart', function (ev) {
+                console.log(ev.currentTarget)
             });
 
             $decreaseButton.on('click', function () {
