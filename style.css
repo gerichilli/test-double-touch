@@ -2,6 +2,12 @@ html, * {
   touch-action: manipulation;
 }
 
+p {
+  background-color: #0056b3;
+  touch-action: manipulation;
+  padding: 0.5em;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
