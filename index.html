@@ -11,7 +11,7 @@
 <body>
     <div class="counter-container">
         <div class="counter-display" id="productCount">0</div>
-        <div class="button-container">
+        <div id="buttonContainer">
             <button id="decreaseButton">-</button>
             <button id="increaseButton">+</button>
         </div>
@@ -25,7 +25,7 @@
             const $productCount = $('#productCount');
             const $decreaseButton = $('#decreaseButton');
             const $increaseButton = $('#increaseButton');
-            const $buttonContainer = $('.button-container');
+            const $buttonContainer = $('#buttonContainer');
 
             let count = 0;
 
@@ -52,14 +52,10 @@
                     updateDisplay();
                 }
             });
-
-            $buttonContainer.on('click', function (ev) {
-                console.log(ev.target.id || ev.target.classList[0])
-                $('.info').text(ev.target.id || ev.target.classList[0])
-            });
-
+            
             $buttonContainer.on('touchstart', function (ev) {
                 console.log(ev.currentTarget)
+                $('.info').text(ev.target.id || ev.target.classList[0])
             });
 
             $decreaseButton.on('click', function () {
@@ -86,29 +82,29 @@
                 return isTouchDevice
             }
 
-            if (isTablet) {
-                $buttonContainer.on('touchend', function (event) {
-                    const $target = $(event.target);
+            // if (isTablet) {
+            //     $buttonContainer.on('touchend', function (event) {
+            //         const $target = $(event.target);
 
-                    // if (isTablet) {
-                    //     if ($target.find('button').hasClass('disabled')) {
-                    //         $('.info').text(`tablet ${$target.attr('class')}`);
-                    //         event.preventDefault();
-                    //     }
-                    // }
-                });
-            } else {
-                $buttonContainer.on('mouseleave', function (event) {
-                    const $target = $(event.target);
+            //         if (isTablet) {
+            //             if ($target.find('button').hasClass('disabled')) {
+            //                 $('.info').text(`tablet ${$target.attr('class')}`);
+            //                 event.preventDefault();
+            //             }
+            //         }
+            //     });
+            // } else {
+            //     $buttonContainer.on('mouseleave', function (event) {
+            //         const $target = $(event.target);
 
-                    // if (isTablet) {
-                    //     if ($target.find('button').hasClass('disabled')) {
-                    //         $('.info').text(`pc ${$target.attr('class')}`);
-                    //         event.preventDefault();
-                    //     }
-                    // }
-                });
-            }
+            //         if (isTablet) {
+            //             if ($target.find('button').hasClass('disabled')) {
+            //                 $('.info').text(`pc ${$target.attr('class')}`);
+            //                 event.preventDefault();
+            //             }
+            //         }
+            //     });
+            // }
         });
 
     </script>
