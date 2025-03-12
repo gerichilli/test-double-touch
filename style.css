@@ -1,4 +1,4 @@
-html {
+html, * {
   touch-action: manipulation;
 }
 
@@ -46,6 +46,7 @@ button {
   height: 40px;
   user-select: none;
   -webkit-user-select: none;
+  position: relative;
 }
 
 button:hover {
@@ -54,9 +55,24 @@ button:hover {
 
 button.disabled {
   pointer-events: none;
-  opacity: 0.5;
   cursor: default;
+}
+
+button.disabled::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  content: '-';
   background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button#increaseButton.disabled::after {
+  content: '+';
 }
 
 #productCount {

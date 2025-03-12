@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Product Counter</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -52,7 +52,7 @@
                     updateDisplay();
                 }
             });
-            
+
             $buttonContainer.on('touchstart', function (ev) {
                 console.log(ev.currentTarget)
                 $('.info').text(ev.target.id || ev.target.classList[0])
