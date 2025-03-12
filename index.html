@@ -93,27 +93,27 @@
                 return isTouchDevice
             }
 
-            if (isTablet) {
-                $buttonContainer.on('touchend', function (event) {
-                    const $target = $(event.target);
+            // if (isTablet) {
+            //     $buttonContainer.on('touchend', function (event) {
+            //         const $target = $(event.target);
 
-                    if (isTablet) {
-                        if ($target.find('button').hasClass('disabled')) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-            } else {
-                $buttonContainer.on('mouseleave', function (event) {
-                    const $target = $(event.target);
+            //         if (isTablet) {
+            //             if ($target.find('button').hasClass('disabled')) {
+            //                 event.preventDefault();
+            //             }
+            //         }
+            //     });
+            // } else {
+            //     $buttonContainer.on('mouseleave', function (event) {
+            //         const $target = $(event.target);
 
-                    if (isTablet) {
-                        if ($target.find('button').hasClass('disabled')) {
-                            event.preventDefault();
-                        }
-                    }
-                });
-            }
+            //         if (isTablet) {
+            //             if ($target.find('button').hasClass('disabled')) {
+            //                 event.preventDefault();
+            //             }
+            //         }
+            //     });
+            // }
         });
 
     </script>
