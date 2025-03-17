@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Product Counter</title>
     <link rel="stylesheet" href="style.css">
@@ -10,17 +11,6 @@
 
 <body>
     <div class="counter-container">
-        <p>Zoom</p>
-        <br/>
-        <span>Zoom</span>
-        <br/><br/><br/>
-        <div>Zoom</div>
-        <br/><br/>
-        <a href="#" onclick="return false;">Do not zoom</a>
-        <br/><br/>
-        <input type="text">
-        <br/><br/>
-        <button>Do not zoom</button>
         <div class="counter-display" id="productCount">0</div>
         <div id="buttonContainer">
             <button id="decreaseButton">-</button>
@@ -48,7 +38,7 @@
                     $decreaseButton.removeClass("disabled");
                 }
 
-                if (count >= 10) {
+                if (count >= 6) {
                     $increaseButton.addClass("disabled");
                 } else {
                     $increaseButton.removeClass("disabled");
@@ -62,11 +52,6 @@
                     count++;
                     updateDisplay();
                 }
-            });
-
-            $buttonContainer.on('touchstart', function (ev) {
-                console.log(ev.currentTarget)
-                $('.info').text(ev.target.id || ev.target.classList[0])
             });
 
             $decreaseButton.on('click', function () {

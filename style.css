@@ -1,12 +1,8 @@
-html, * {
+html {
   touch-action: manipulation;
 }
 
-p {
-  background-color: #0056b3;
-  touch-action: manipulation;
-  padding: 0.5em;
-}
+html, body { height: 100%; }
 
 body {
   font-family: Arial, sans-serif;
@@ -74,6 +70,7 @@ button.disabled::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
 }
 
 button#increaseButton.disabled::after {
