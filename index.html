@@ -24,8 +24,6 @@
         // HANDLE DISABLED
         $(document).ready(function () {
             const $productCount = $('#productCount');
-            const $decreaseButton = $('#decreaseButton');
-            const $increaseButton = $('#increaseButton');
             const $buttonContainer = $('#buttonContainer');
 
             let count = 0;
@@ -33,34 +31,40 @@
             function updateDisplay() {
                 $productCount.text(count);
                 if (count === 0) {
-                    $decreaseButton.addClass("disabled");
+                    $('#decreaseButton').addClass("disabled");
                 } else {
-                    $decreaseButton.removeClass("disabled");
+                    $('#decreaseButton').removeClass("disabled");
                 }
 
                 if (count >= 6) {
-                    $increaseButton.addClass("disabled");
+                    $('#increaseButton').addClass("disabled");
                 } else {
-                    $increaseButton.removeClass("disabled");
+                    $('#increaseButton').removeClass("disabled");
                 }
             }
 
             updateDisplay();
 
-            $increaseButton.on('click', function () {
-                if (!$(this).hasClass('disabled')) {
-                    count++;
+            // **Event Delegation: Handle click events on buttonContainer**
+            $buttonContainer.on('click', 'button', function () {
+                const $target = $(this);
+
+                if (!$target.hasClass('disabled')) {
+                    if ($target.is('#increaseButton')) {
+                        count++;
+                    } else if ($target.is('#decreaseButton')) {
+                        count--;
+                    }
                     updateDisplay();
                 }
             });
 
-            $decreaseButton.on('click', function () {
-                if (!$(this).hasClass('disabled')) {
-                    count--;
-                    updateDisplay();
-                }
+            // **Prevent double-tap zoom in Safari by handling `touchend`**
+            $buttonContainer.on('touchend', function (event) {
+                event.preventDefault(); // Prevent Safari from detecting double-tap as zoom
             });
         });
+
 
     </script>
 </body>
