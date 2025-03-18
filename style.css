@@ -1,6 +1,7 @@
 html {
   touch-action: manipulation;
   -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 html, body { height: 100%; }
