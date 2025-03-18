@@ -44,8 +44,7 @@
             }
 
             updateDisplay();
-
-            // **Event Delegation: Handle click events on buttonContainer**
+            
             $buttonContainer.on('click', 'button', function () {
                 const $target = $(this);
 
@@ -57,11 +56,6 @@
                     }
                     updateDisplay();
                 }
-            });
-
-            // **Prevent double-tap zoom in Safari by handling `touchend`**
-            $buttonContainer.on('touchend', function (event) {
-                event.preventDefault(); // Prevent Safari from detecting double-tap as zoom
             });
         });
 
