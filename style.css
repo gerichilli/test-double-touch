@@ -37,8 +37,11 @@ body {
 
 .innerWrapper {
   display: flex;
-  justify-content: space-between;
   touch-action: manipulation;
+}
+
+.space {
+  flex-grow: 1;
 }
 
 button {
