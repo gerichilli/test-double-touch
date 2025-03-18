@@ -1,5 +1,4 @@
 html {
-  touch-action: manipulation;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
 }
@@ -24,7 +23,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 300px;
 }
 
 .counter-display {
@@ -34,8 +32,13 @@ body {
 }
 
 #buttonContainer {
+  width: 300px;
+}
+
+.innerWrapper {
   display: flex;
   justify-content: space-between;
+  touch-action: manipulation;
 }
 
 button {
@@ -52,6 +55,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   position: relative;
+  
 }
 
 button:hover {

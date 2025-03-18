@@ -13,8 +13,10 @@
     <div class="counter-container">
         <div class="counter-display" id="productCount">0</div>
         <div id="buttonContainer">
-            <button id="decreaseButton">-</button>
-            <button id="increaseButton">+</button>
+            <div class="innerWrapper">
+                <button id="decreaseButton">-</button>
+                <button id="increaseButton">+</button>
+            </div>
         </div>
         <pre class="info"></pre>
     </div>
@@ -44,7 +46,7 @@
             }
 
             updateDisplay();
-            
+
             $buttonContainer.on('click', 'button', function () {
                 const $target = $(this);
 
