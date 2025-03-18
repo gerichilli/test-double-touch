@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Product Counter</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 
 <body>
@@ -60,45 +60,6 @@
                     updateDisplay();
                 }
             });
-
-            function isTablet() {
-                const userAgent = navigator.userAgent.toLowerCase();
-                const isTouchDevice = (typeof navigator === 'undefined' || navigator == null) ?
-                    null :
-                    navigator.platform === 'iPhone' ||
-                    navigator.platform === 'iPad' ||
-                    navigator.platform === 'iPod' ||
-                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
-                    navigator.userAgent.search(/iPhone/) !== -1 ||
-                    navigator.userAgent.search(/iPad/) !== -1 ||
-                    navigator.userAgent.search(/iPod/) !== -1 ||
-                    (navigator.userAgent.search(/MacIntel/) !== -1 && navigator.maxTouchPoints > 1) ||
-                    navigator.userAgent.search(/Android/) !== -1
-
-                return isTouchDevice
-            }
-
-            // if (isTablet) {
-            //     $buttonContainer.on('touchend', function (event) {
-            //         const $target = $(event.target);
-
-            //         if (isTablet) {
-            //             if ($target.find('button').hasClass('disabled')) {
-            //                 event.preventDefault();
-            //             }
-            //         }
-            //     });
-            // } else {
-            //     $buttonContainer.on('mouseleave', function (event) {
-            //         const $target = $(event.target);
-
-            //         if (isTablet) {
-            //             if ($target.find('button').hasClass('disabled')) {
-            //                 event.preventDefault();
-            //             }
-            //         }
-            //     });
-            // }
         });
 
     </script>
