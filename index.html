@@ -58,15 +58,17 @@
                         count--;
                     }
                     updateDisplay();
-                }   
+                }
             });
 
+            let lastTouch = 0;
             document.addEventListener('touchend', function (event) {
-                console.log('Touched element:', event.target.tagName, event.target.className);
-                $(".info").html(`'Touched element:' - ${event.target.tagName} - ${event.target.className}`)
-            });
-
-            window.addEventListener("touchstart", () => {})
+                const now = new Date().getTime();
+                if (now - lastTouch <= 300) {
+                    event.preventDefault();
+                }
+                lastTouch = now;
+            }, { passive: false });
         });
 
 
