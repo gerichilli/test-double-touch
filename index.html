@@ -58,13 +58,15 @@
                         count--;
                     }
                     updateDisplay();
-                }
+                }   
             });
 
             document.addEventListener('touchend', function (event) {
                 console.log('Touched element:', event.target.tagName, event.target.className);
                 $(".info").html(`'Touched element:' - ${event.target.tagName} - ${event.target.className}`)
             });
+
+            window.addEventListener("touchstart", () => {})
         });
 
 
