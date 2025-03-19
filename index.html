@@ -14,9 +14,9 @@
         <div class="counter-display" id="productCount">0</div>
         <div id="buttonContainer">
             <div class="innerWrapper">
-                <button id="decreaseButton">-</button>
-                <div class="space"></div>
-                <button id="increaseButton">+</button>
+                <div class="button-prev-wrapper"><button id="decreaseButton">-</button></div>
+                <div class="slider"></div>
+                <div class="button-next-wrapper"> <button id="increaseButton">+</button></div>
             </div>
         </div>
         <pre class="info"></pre>
@@ -61,8 +61,8 @@
                 }
             });
 
-            $(document.documentElement).on('mousedown', () => {
-                console.log("mousedown")
+            document.addEventListener('touchend', function (event) {
+                console.log('Touched element:', event.target.tagName, event.target.className);
             });
         });
 

@@ -40,7 +40,7 @@ body {
   touch-action: manipulation;
 }
 
-.space {
+.slider {
   flex-grow: 1;
 }
 
